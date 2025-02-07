@@ -1,0 +1,68 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = SunPro_Jobs
+build_property.RootNamespace = SunPro_Jobs
+build_property.ProjectDir = c:\Users\CHRISTIAN\source\repos\SunPro Jobs\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\Users\CHRISTIAN\source\repos\SunPro Jobs
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Pages/JobApply.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9iQXBwbHkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Pages/JobDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9iRGV0YWlscy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Pages/JobPosting.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9iUG9zdGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Pages/Jobs.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9icy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Shared/Bottom.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEJvdHRvbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/Shared/NavBar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdkJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/CHRISTIAN/source/repos/SunPro Jobs/_Imports.razor]
+build_metadata.Ad

@@ -1,0 +1,87 @@
+﻿@page "/job-post"
+
+@using Syncfusion.Blazor
+
+<div class="container form-container">
+    <SfCard class="job-posting-card shadow-lg p-4">
+        <SfCardHeader>
+            <h2 class="text-primary text-center">SunPro Job Posting</h2>
+        </SfCardHeader>
+
+        <SfCardContent>
+            <EditForm Model="new { }">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="title" class="fw-bold">Job Title</label>
+                        <SfTextBox Id="title" Placeholder="Enter job title" CssClass="w-100" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <label for="location" class="fw-bold">Location</label>
+                        <SfTextBox Id="location" Placeholder="Enter job location" CssClass="w-100" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="salaryRange" class="fw-bold">Salary Range</label>
+                        <SfTextBox Id="salaryRange" Placeholder="Enter salary range" CssClass="w-100" />
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label for="type" class="fw-bold">Job Type</label>
+                        <SfDropDownList TValue="string" TItem="string" Id="type" Placeholder="Select job type"
+                                        CssClass="w-100" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="fw-bold">Description</label>
+                    <SfTextArea Id="description" Placeholder="Enter job description" CssClass="w-100" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="postedDate" class="fw-bold">Posted Date</label>
+                        <SfDatePicker TValue="DateTime" Id="postedDate" Placeholder="Select posted date"
+                                      CssClass="w-100" Format="yyyy-MM-dd" StrictMode="true" />
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label for="expiryDate" class="fw-bold">Expiry Date</label>
+                        <SfDatePicker TValue="DateTime" Id="expiryDate" Placeholder="Select expiry date"
+                                      CssClass="w-100" Format="yyyy-MM-dd" StrictMode="true" />
+                    </div>
+                </div>
+
+                <p>
+                    <SfMessage Severity="MessageSeverity.Success" Visible="ShowSuccessMessage">
+                        Job Posted Successfully
+                    </SfMessage>
+                </p>
+
+                <div class="form-group text-center mt-3">
+                    <SfButton CssClass="e-primary w-50" Type="Submit">Post Job</SfButton>
+                </div>
+
+                <p>
+                    <SfMessage Severity="MessageSeverity.Error" Visible="ShowErrorMessage">
+                        Please Post Again.....Something Just Happened!!!
+                    </SfMessage>
+                </p>
+            </EditForm>
+        </SfCardContent>
+    </SfCard>
+</div>
+
+
+
+@code {
+    bool ShowSuccessMessage = false;
+    bool ShowErrorMessage = false;
+}

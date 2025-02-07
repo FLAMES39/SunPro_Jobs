@@ -1,0 +1,152 @@
+﻿@page "/jobs"
+
+@inject NavigationManager Navigation
+<div class="job-listing-container">
+    <div class="header">
+        <h2 class="title">Latest featured jobs</h2>
+        <a href="#" class="explore-more">Explore more →</a>
+    </div>
+
+    <div class="job-grid">
+        <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="images/logo.jpg" alt="Customer Service" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">Customer Service</h3>
+                <p class="job-category">Sales, Service, & Support</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Full-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Zealand</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter>
+                <SfButton CssClass="apply-btn" Content="Apply Now"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+               <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="images/logo.jpg" alt="Customer Service" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">Customer Service</h3>
+                <p class="job-category">Sales, Service, & Support</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Full-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Zealand</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter>
+                <SfButton CssClass="apply-btn" Content="Apply Now"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+               <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="images/logo.jpg" alt="Customer Service" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">Customer Service</h3>
+                <p class="job-category">Sales, Service, & Support</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Full-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Zealand</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter>
+                <SfButton CssClass="apply-btn" Content="Apply Now"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+               <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="images/logo.jpg" alt="Customer Service" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">Customer Service</h3>
+                <p class="job-category">Sales, Service, & Support</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Full-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Zealand</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter>
+                <SfButton CssClass="apply-btn" Content="Apply Now"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+                <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="images/logo.jpg" alt="Customer Service" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">Customer Service</h3>
+                <p class="job-category">Sales, Service, & Support</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Full-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Zealand</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter> 
+                <SfButton CssClass="apply-btn" Content="Apply Now"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+                <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="/images/logo.jpg" alt="Customer Service" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">Customer Service</h3>
+                <p class="job-category">Sales, Service, & Support</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Full-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Zealand</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter>
+                <SfButton CssClass="apply-btn" Content="Apply Now"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+
+        <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="images/logo.jpg" alt="Full-Stack Developer" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">Full-Stack Developer</h3>
+                <p class="job-category">Engineering & Tech</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Full-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Philippines</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter>
+                <SfButton CssClass="apply-btn" Content="Apply Now"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+
+        <SfCard CssClass="job-card">
+            <SfCardHeader>
+                <img src="images/logo.jpg" alt="HR Director" class="job-image">
+            </SfCardHeader>
+            <SfCardContent>
+                <h3 class="job-title">HR Director</h3>
+                <p class="job-category">People</p>
+                <div class="job-meta">
+                    <p><i class="fas fa-clock"></i> Part-Time</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Canada</p>
+                </div>
+            </SfCardContent>
+            <SfCardFooter>
+                <SfButton CssClass="apply-btn" Content="Apply Now" OnClick="@(() => NavigateToPage("/job-post"))"></SfButton>
+            </SfCardFooter>
+        </SfCard>
+    </div>
+</div>
+
+
+@code {
+    private void NavigateToPage(String url)
+    {
+        Navigation.NavigateTo(url);
+    }
+}
+
+

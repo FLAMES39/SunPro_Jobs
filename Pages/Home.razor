@@ -1,0 +1,28 @@
+﻿@page "/"
+
+@inject NavigationManager NavigationManager
+
+<div class="header-section" style="background-color:lightslategray">
+    <div class="explore">
+        <h1>Explore open career opportunities.</h1>
+        <p>We commit to exceptional company culture and outstanding benefits.</p>
+    </div>
+
+    <div class="search-container">
+        <SfDropDownList TItem="string" TValue="string" @bind-Value="selectedLocation" DataSource="locations"
+                        Placeholder="Philippines" CssClass="search-dropdown" />
+        <SfButton CssClass="search-btn">Search</SfButton>
+    </div>
+
+    <div class="cta-container">
+        <SfButton CssClass="cta-button">Discover Recent News <span class="arrow">→</span></SfButton>
+        <SfButton CssClass="cta-button">Know our process <span class="arrow">→</span></SfButton>
+    </div>
+</div>
+
+<Jobs />
+
+@code {
+    private string selectedLocation = "Philippines";
+    private List<string> locations = new() { "New Zealand", "Philippines", "Canada" };
+}

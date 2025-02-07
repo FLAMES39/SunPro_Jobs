@@ -1,0 +1,21 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<SfAppBar  ColorMode="AppBarColor.Primary">
+    <div class="logo">
+        
+         
+        <p>SunPro Jobs</p>
+
+    </div>
+    <SfButton CssClass="e-inherit" Content="Find Jobs" OnClick="@(() => NavigateToPage("/jobs"))"></SfButton>
+    <SfButton CssClass="e-inherit" Content="Register" OnClick="@(() => NavigateToPage("/register"))"></SfButton>
+    <SfButton CssClass="e-primary" Content="SignUp" OnClick="@(() => NavigateToPage("/signUp"))"></SfButton>
+</SfAppBar>
+
+@code {
+    private void NavigateToPage(string url)
+    {
+        NavigationManager.NavigateTo(url, forceLoad: true); // Force reload
+    }
+}

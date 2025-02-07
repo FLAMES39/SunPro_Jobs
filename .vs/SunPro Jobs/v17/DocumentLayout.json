@@ -1,0 +1,399 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\shared\\bottom.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:shared\\bottom.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\shared\\navbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:shared\\navbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\pages\\jobapply.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:pages\\jobapply.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\wwwroot\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:wwwroot\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\pages\\jobs.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:pages\\jobs.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\pages\\jobposting.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:pages\\jobposting.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\Debug\\net8.0\\SunPro Jobs.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net8.0\\SunPro Jobs.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\pages\\jobdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:pages\\jobdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\sunpro jobs.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:sunpro jobs.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|c:\\users\\christian\\source\\repos\\sunpro jobs\\wwwroot\\images\\logo.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{57162FB2-D45C-4342-8612-28EF89D9BDBC}|SunPro Jobs.csproj|solutionrelative:wwwroot\\images\\logo.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Bottom.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Shared\\Bottom.razor",
+              "RelativeDocumentMoniker": "Shared\\Bottom.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Shared\\Bottom.razor",
+              "RelativeToolTip": "Shared\\Bottom.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-06T21:57:52.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Layout\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-05T23:02:58.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-02-06T20:28:27.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SignUp.css",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\SignUp.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\SignUp.css",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\SignUp.css",
+              "RelativeToolTip": "wwwroot\\css\\SignUp.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-06T17:58:56.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NavBar.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Shared\\NavBar.razor",
+              "RelativeDocumentMoniker": "Shared\\NavBar.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Shared\\NavBar.razor",
+              "RelativeToolTip": "Shared\\NavBar.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-05T22:55:47.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Jobs.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\Jobs.razor",
+              "RelativeDocumentMoniker": "Pages\\Jobs.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\Jobs.razor",
+              "RelativeToolTip": "Pages\\Jobs.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEoAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-06T09:46:23.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "JobPosting.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\JobPosting.razor",
+              "RelativeDocumentMoniker": "Pages\\JobPosting.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\JobPosting.razor",
+              "RelativeToolTip": "Pages\\JobPosting.razor",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-06T15:09:30.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\Home.razor",
+              "RelativeToolTip": "Pages\\Home.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-05T22:51:19.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\_Imports.razor",
+              "RelativeDocumentMoniker": "_Imports.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\_Imports.razor",
+              "RelativeToolTip": "_Imports.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-05T23:45:21.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\app.css",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "wwwroot\\css\\app.css",
+              "ViewState": "AQIAAF0BAAAAAAAAAAAowGQBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-05T22:54:26.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Register.css",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\Register.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\Register.css",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\Register.css",
+              "RelativeToolTip": "wwwroot\\css\\Register.css",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAACQAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-06T16:42:01.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "JobApply.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\JobApply.razor",
+              "RelativeDocumentMoniker": "Pages\\JobApply.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\JobApply.razor",
+              "RelativeToolTip": "Pages\\JobApply.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-06T12:25:16.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T20:06:36.236Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SignUp.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\SignUp.razor",
+              "RelativeDocumentMoniker": "Pages\\SignUp.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\SignUp.razor",
+              "RelativeToolTip": "Pages\\SignUp.razor",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-06T17:39:40.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": ".NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "RelativeDocumentMoniker": "obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "RelativeToolTip": "obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T22:24:28.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SunPro Jobs.AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\Debug\\net8.0\\SunPro Jobs.AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "obj\\Debug\\net8.0\\SunPro Jobs.AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\Debug\\net8.0\\SunPro Jobs.AssemblyInfo.cs",
+              "RelativeToolTip": "obj\\Debug\\net8.0\\SunPro Jobs.AssemblyInfo.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T22:29:02.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\Register.razor",
+              "RelativeDocumentMoniker": "Pages\\Register.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\Register.razor",
+              "RelativeToolTip": "Pages\\Register.razor",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-06T17:12:31.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\index.html",
+              "RelativeToolTip": "wwwroot\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-02-05T23:40:15.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "JobDetails.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\JobDetails.razor",
+              "RelativeDocumentMoniker": "Pages\\JobDetails.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\Pages\\JobDetails.razor",
+              "RelativeToolTip": "Pages\\JobDetails.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-06T12:26:56.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\App.razor",
+              "RelativeDocumentMoniker": "App.razor",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\App.razor",
+              "RelativeToolTip": "App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-05T23:35:08.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SunPro Jobs",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\SunPro Jobs.csproj",
+              "RelativeDocumentMoniker": "SunPro Jobs.csproj",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\SunPro Jobs.csproj",
+              "RelativeToolTip": "SunPro Jobs.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-06T11:50:44.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "logo.jpg - Bitmap [110x93, 24 bit, JPG]",
+              "DocumentMoniker": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\images\\logo.jpg",
+              "RelativeDocumentMoniker": "wwwroot\\images\\logo.jpg",
+              "ToolTip": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\images\\logo.jpg - Bitmap [110x93, 24 bit, JPG]",
+              "RelativeToolTip": "wwwroot\\images\\logo.jpg - Bitmap [110x93, 24 bit, JPG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-02-06T11:22:19.312Z",
+              "EditorCaption": " - Bitmap [110x93, 24 bit, JPG]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

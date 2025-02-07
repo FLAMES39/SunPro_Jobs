@@ -1,0 +1,80 @@
+﻿@page "/register"
+
+
+<div class="registration-container">
+    <SfCard class="registration-card">
+        <SfCardHeader class="text-center">
+            <img src="/images//seeker.jpeg" alt="Logo" class="logo" />
+            <h2 class="e-text-primary title">Create an Account</h2>
+            <p class="subtitle">Sign up now to get started with an account.</p>
+        </SfCardHeader>
+
+        <SfCardContent>
+            <!-- Sign Up with Google Button -->
+            <div class="e-text-center e-margin-bottom-15">
+                <SfButton CssClass="e-outline e-primary w-100 google-btn">
+                    <img src="/icon-192.png" alt="Google" class="google-logo" />
+                    Sign up with Google
+                </SfButton>
+            </div>
+
+            <div class="separator">OR</div>
+
+            <EditForm Model="new{}">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="fullName">Full Name<span class="required">*</span></label>
+                    <SfTextBox Id="fullName" Placeholder="John Doe" CssClass="input-field" />
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-group">
+                    <label for="email">Email Address<span class="required">*</span></label>
+                    <SfTextBox Id="email" Placeholder="example@email.com" CssClass="input-field" InputType="Email" />
+                </div>
+
+                <!-- Password -->
+                <div class="form-group password-group">
+                    <label for="password">Password<span class="required">*</span></label>
+                    <div class="password-container">
+                        <SfTextBox Id="password" Placeholder="Enter password" CssClass="input-field" InputType="password" />
+                        <SfButton CssClass="password-toggle">
+                            <SfIcon IconCss="e-icons e-eye" />
+                        </SfButton>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group password-group">
+                    <label for="confirmPassword">Confirm Password<span class="required">*</span></label>
+                    <div class="password-container">
+                        <SfTextBox Id="confirmPassword" Placeholder="Confirm password" CssClass="input-field" InputType="password" />
+                        <SfButton CssClass="password-toggle">
+                            <SfIcon IconCss="e-icons e-eye" />
+                        </SfButton>
+                    </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="form-group terms-checkbox">
+                    <SfCheckBox TChecked="bool" Label="I have read and agree to the " />
+                    <a href="/terms" class="terms-link">Terms of Service</a>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group text-center">
+                    <SfButton CssClass="submit-btn" Type="Submit">Get Started</SfButton>
+                </div>
+
+                <!-- Login Redirect -->
+                <div class="text-center mt-3">
+                    <p class="login-text">Already have an account? <a href="/login" class="login-link">Log in</a></p>
+                </div>
+            </EditForm>
+        </SfCardContent>
+    </SfCard>
+</div>
+
