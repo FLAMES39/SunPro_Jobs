@@ -1,43 +1,47 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\Debug\\net8.0\\compressed\\8xbja1i32w.gz",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\obj\\Debug\\net8.0\\compressed\\8xbja1i32w.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\Register.css",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\css\\Register.css",
       "PackagePath": "staticwebassets\\css\\Register.css"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\SignUp.css",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\css\\SignUp.css",
       "PackagePath": "staticwebassets\\css\\SignUp.css"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\icon-192.png",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\images\\employment.avif",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\images\\employment.avif",
       "PackagePath": "staticwebassets\\images\\employment.avif"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\images\\logo.jpg",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\images\\jobseeker_hub_cover.jpeg",
+      "PackagePath": "staticwebassets\\images\\jobseeker_hub_cover.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\images\\logo.jpg",
       "PackagePath": "staticwebassets\\images\\logo.jpg"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\images\\seeker.jpeg",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\images\\seeker.jpeg",
       "PackagePath": "staticwebassets\\images\\seeker.jpeg"
     },
     {
-      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\wwwroot\\index.html",
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {

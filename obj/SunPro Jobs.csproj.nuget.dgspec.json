@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\SunPro Jobs.csproj": {}
+    "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\SunPro Jobs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\SunPro Jobs.csproj": {
+    "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\SunPro Jobs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\SunPro Jobs.csproj",
+        "projectUniqueName": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\SunPro Jobs.csproj",
         "projectName": "SunPro Jobs",
-        "projectPath": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\SunPro Jobs.csproj",
+        "projectPath": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\SunPro Jobs.csproj",
         "packagesPath": "C:\\Users\\CHRISTIAN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CHRISTIAN\\source\\repos\\SunPro Jobs\\obj\\",
+        "outputPath": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\CHRISTIAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,21 +55,33 @@
               "target": "Package",
               "version": "[8.0.12, )"
             },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.12, )",
+              "version": "[8.0.13, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.12, )",
+              "version": "[8.0.13, )",
               "autoReferenced": true
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.5.2, )"
             },
             "Syncfusion.Blazor": {
               "target": "Package",
-              "version": "[28.2.4, )"
+              "version": "[28.2.5, )"
             }
           },
           "imports": [
@@ -86,7 +98,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[8.0.12, 8.0.12]"
+              "version": "[8.0.13, 8.0.13]"
             }
           ],
           "frameworkReferences": {
@@ -94,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

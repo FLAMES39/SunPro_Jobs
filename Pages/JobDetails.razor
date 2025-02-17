@@ -1,8 +1,161 @@
-﻿
-@page "/jobDetails"
+﻿@page "/job-details/{JobId:int}"
+@inject JobService JobService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+@using SunPro_Jobs.Models
+@using SunPro_Jobs.Service
 
-<h3>JobDetails</h3>
+@if (isLoading)
+{
+    <div class="spinner">
+        <SfSpinner></SfSpinner>
+        <p>Loading job details...</p>
+    </div>
+}
+else if (errorMessage != null)
+{
+    <div class="error-banner">
+        <p>@errorMessage</p>
+        <SfButton CssClass="retry-btn" Content="Retry" OnClick="@RetryFetchJob"></SfButton>
+    </div>
+}
+else
+{
+    <SfCard CssClass="job-detail-container">
+        <div class="banner">
+            <div class="banner-content">
+                <h1 class="job-title">@job.JobName</h1>
+            </div>
+        </div>
+
+        <div class="job-detail-body">
+            <h2 class="job-detail-title">@job.JobName</h2>
+            <p class="job-meta">@job.JobType • @job.JobStatus</p>
+            <p class="posted-time">Posted on @job.PostingDate.ToString("MMMM dd, yyyy")</p>
+
+            <div class="job-info-grid">
+                <SfCard CssClass="info-card">
+                    <SfCardHeader>
+                        <h4>Job Type</h4>
+                    </SfCardHeader>
+                    <SfCardContent>
+                        <span class="info-value">@job.JobType</span>
+                    </SfCardContent>
+                </SfCard>
+
+                <SfCard CssClass="info-card">
+                    <SfCardHeader>
+                        <h4>Salary Range</h4>
+                    </SfCardHeader>
+                    <SfCardContent>
+                        <span class="salary-value">@job.SalaryRange</span>
+                    </SfCardContent>
+                </SfCard>
+            </div>
+
+            <div class="job-section">
+                <h3>Job Description</h3>
+                <p>@job.JobDescription</p>
+            </div>
+
+            <div class="job-section">
+                <h3>Job Requirements</h3>
+                <p>@job.JobRequirements</p>
+            </div>
+
+            <div class="apply-container">
+                @if (!isHR)
+                {
+                    <SfButton CssClass="apply-btn" Content="Apply for this position" OnClick="@ApplyForJob"></SfButton>
+                }
+                <SfButton CssClass="back-btn" Content="Go Back" OnClick="@GoBack"></SfButton>
+            </div>
+
+        </div>
+    </SfCard>
+}
 
 @code {
+    [Parameter]
+    public int JobId { get; set; }
+    private bool isLoggedIn = false;
+    private bool isHR = false;
+    private JobModel job;
+    private bool isLoading = true;
+    private string errorMessage;
+    private string names = "Guest";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CheckAuthenticationState();
+        await FetchJobDetails();
+    }
+
+    private async Task FetchJobDetails()
+    {
+        isLoading = true;
+        errorMessage = null;
+        try
+        {
+            job = await JobService.GetSingleJobAsync(JobId);
+            if (job == null)
+            {
+                errorMessage = "Job details not found.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error fetching job details: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void ApplyForJob()
+    {
+        Navigation.NavigateTo($"/jobApplication/{JobId}");
+    }
+
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/jobs");
+    }
+
+    private async Task RetryFetchJob()
+    {
+        await FetchJobDetails();
+    }
+
+    private async Task CheckAuthenticationState()
+    {
+        try
+        {
+            var role = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "role");
+            isLoggedIn = !string.IsNullOrEmpty(role);
+
+            if (isLoggedIn)
+            {
+                isHR = role?.ToLower() == "hr";                
+                var storedUsername = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "username");
+              
+                names = string.IsNullOrEmpty(storedUsername) ? "User" : storedUsername;
+            }
+            else
+            {
+                isHR = false;
+                names = "Guest";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error checking authentication state: {ex.Message}");
+        }
+    }
+
+
 
 }

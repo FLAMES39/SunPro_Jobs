@@ -1,6 +1,10 @@
 ﻿@page "/job-post"
-
-@using Syncfusion.Blazor
+@inject JobService JobService
+@inject IJSRuntime JSRuntime
+@using Syncfusion.Blazor.Notifications
+@using System.Threading.Tasks
+@using SunPro_Jobs.Models
+@using SunPro_Jobs.Service
 
 <div class="container form-container">
     <SfCard class="job-posting-card shadow-lg p-4">
@@ -9,79 +13,147 @@
         </SfCardHeader>
 
         <SfCardContent>
-            <EditForm Model="new { }">
+            <EditForm Model="@Job" OnValidSubmit="PostJob">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
 
-                <div class="row">
-                    <div class="col-md-12 form-group">
-                        <label for="title" class="fw-bold">Job Title</label>
-                        <SfTextBox Id="title" Placeholder="Enter job title" CssClass="w-100" />
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 form-group">
-                        <label for="location" class="fw-bold">Location</label>
-                        <SfTextBox Id="location" Placeholder="Enter job location" CssClass="w-100" />
-                    </div>
-                </div>
-
+                <!-- Job Title and Location -->
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="salaryRange" class="fw-bold">Salary Range</label>
-                        <SfTextBox Id="salaryRange" Placeholder="Enter salary range" CssClass="w-100" />
+                        <label for="JobName" class="fw-bold">Job Title</label>
+                        <SfTextBox @bind-Value="Job.JobName" Placeholder="Enter job title" CssClass="w-100" />
+                        <ValidationMessage For="@(() => Job.JobName)" />
                     </div>
-
                     <div class="col-md-6 form-group">
-                        <label for="type" class="fw-bold">Job Type</label>
-                        <SfDropDownList TValue="string" TItem="string" Id="type" Placeholder="Select job type"
-                                        CssClass="w-100" />
+                        <label for="Location" class="fw-bold">Location</label>
+                        <SfTextBox @bind-Value="Job.Location" Placeholder="Enter job location" CssClass="w-100" />
+                        <ValidationMessage For="@(() => Job.Location)" />
                     </div>
                 </div>
 
+                <!-- Salary Range and Job Type -->
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="SalaryRange" class="fw-bold">Salary Range</label>
+                        <SfTextBox @bind-Value="Job.SalaryRange" Placeholder="Enter salary range" CssClass="w-100" />
+                        <ValidationMessage For="@(() => Job.SalaryRange)" />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="JobType" class="fw-bold">Job Type</label>
+                        <SfDropDownList @bind-Value="Job.JobType" TValue="string" TItem="string" Placeholder="Select job type" DataSource="@JobTypes" CssClass="w-100" />
+                        <ValidationMessage For="@(() => Job.JobType)" />
+                    </div>
+                </div>
+
+                <!-- Job Description and Requirements -->
                 <div class="form-group">
-                    <label for="description" class="fw-bold">Description</label>
-                    <SfTextArea Id="description" Placeholder="Enter job description" CssClass="w-100" />
+                    <label for="JobDescription" class="fw-bold">Description</label>
+                    <SfTextArea @bind-Value="Job.JobDescription" Placeholder="Enter job description" CssClass="w-100" />
+                    <ValidationMessage For="@(() => Job.JobDescription)" />
+                </div>
+                <div class="form-group">
+                    <label for="JobRequirements" class="fw-bold">Job Requirements</label>
+                    <SfTextArea @bind-Value="Job.JobRequirements" Placeholder="Enter job requirements" CssClass="w-100" />
+                    <ValidationMessage For="@(() => Job.JobRequirements)" />
                 </div>
 
+                <!-- Dates -->
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="postedDate" class="fw-bold">Posted Date</label>
-                        <SfDatePicker TValue="DateTime" Id="postedDate" Placeholder="Select posted date"
-                                      CssClass="w-100" Format="yyyy-MM-dd" StrictMode="true" />
+                        <label for="PostingDate" class="fw-bold">Posted Date</label>
+                        <SfDatePicker @bind-Value="Job.PostingDate" TValue="DateTime" Placeholder="Select posting date" CssClass="w-100" Format="yyyy-MM-dd" />
+                        <ValidationMessage For="@(() => Job.PostingDate)" />
                     </div>
-
                     <div class="col-md-6 form-group">
-                        <label for="expiryDate" class="fw-bold">Expiry Date</label>
-                        <SfDatePicker TValue="DateTime" Id="expiryDate" Placeholder="Select expiry date"
-                                      CssClass="w-100" Format="yyyy-MM-dd" StrictMode="true" />
+                        <label for="ClosingDate" class="fw-bold">Expiry Date</label>
+                        <SfDatePicker @bind-Value="Job.ClosingDate" TValue="DateTime" Placeholder="Select expiry date" CssClass="w-100" Format="yyyy-MM-dd" />
+                        <ValidationMessage For="@(() => Job.ClosingDate)" />
                     </div>
                 </div>
 
-                <p>
-                    <SfMessage Severity="MessageSeverity.Success" Visible="ShowSuccessMessage">
-                        Job Posted Successfully
-                    </SfMessage>
-                </p>
+                <!-- Job Link Display (after successful posting) -->
+                @if (!string.IsNullOrEmpty(GeneratedJobLink))
+                {
+                    <div class="alert alert-success mt-3">
+                        <strong>Job posted successfully!</strong><br />
+                        <strong>Job Link:</strong> <a href="@GeneratedJobLink" target="_blank">@GeneratedJobLink</a>
+                        <SfButton CssClass="e-success ml-2" OnClick="CopyToClipboard">Copy Link</SfButton>
+                    </div>
+                }
 
-                <div class="form-group text-center mt-3">
-                    <SfButton CssClass="e-primary w-50" Type="Submit">Post Job</SfButton>
+
+                <!-- Submit Button -->
+                <div class="form-group text-center mt-4">
+                    <SfButton CssClass="e-primary w-50" IsPrimary="true" Disabled="@IsSubmitting" OnClick="PostJob">
+
+                        @if (IsSubmitting)
+                        {
+                            <span>Submitting...</span>
+                        }
+                        else
+                        {
+                            <span>Post Job</span>
+                        }
+                    </SfButton>
                 </div>
-
-                <p>
-                    <SfMessage Severity="MessageSeverity.Error" Visible="ShowErrorMessage">
-                        Please Post Again.....Something Just Happened!!!
-                    </SfMessage>
-                </p>
             </EditForm>
         </SfCardContent>
     </SfCard>
 </div>
 
-
-
 @code {
-    bool ShowSuccessMessage = false;
-    bool ShowErrorMessage = false;
+    private JobModel Job = new JobModel();
+    private bool IsSubmitting = false;
+    private string GeneratedJobLink = string.Empty;
+    private List<string> JobTypes = new List<string> { "Full-Time", "Part-Time", "Contract" };
+    private SfToast ErrorToast;
+
+private async Task PostJob()
+{
+    IsSubmitting = true;
+    try
+    {
+        var result = await JobService.CreateJobAsync(Job);
+        if (result != null && !string.IsNullOrEmpty(result.Jobink))
+        {
+            GeneratedJobLink = result.Jobink;
+            Console.WriteLine($"Job posted successfully. Link: {GeneratedJobLink}");
+
+            StateHasChanged();  // ✅ Ensures Blazor updates the UI
+        }
+        else
+        {
+            Console.WriteLine("Failed to create job. Jobink is null.");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error: {ex.Message}");
+        await ErrorToast.ShowAsync(new ToastModel { Content = "Failed to post job!", CssClass = "e-danger" });
+    }
+    finally
+    {
+        IsSubmitting = false;
+    }
+}
+
+
+
+    private void ResetForm()
+    {
+        Job = new JobModel();  // Clears form fields
+        GeneratedJobLink = string.Empty;
+    }
+
+    private async Task CopyToClipboard()
+    {
+        if (!string.IsNullOrEmpty(GeneratedJobLink))
+        {
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", GeneratedJobLink);
+            Console.WriteLine("Job link copied to clipboard.");
+        }
+    }
+
+
+
 }

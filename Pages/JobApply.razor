@@ -1,8 +1,229 @@
-﻿
-@page "/apply"
+﻿@page "/jobApplication/{JobId:int?}"
+@inject ApplicationService ApplicationService
+@inject userServices userService
+@inject NavigationManager Navigation
+@using SunPro_Jobs.Models
+@using SunPro_Jobs.Service
+@using Microsoft.AspNetCore.Components.Forms
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Spinner
 
-<h3>JobApply</h3>
+<SfCard CssClass="job-application-container">
+    <div class="form-header">
+        <h2>Job Application</h2>
+        <p>@(isEdit ? "Edit your application details." : "Please fill out the form to apply for the position.")</p>
+    </div>
+
+    <EditForm Model="@applicationModel" OnValidSubmit="SubmitApplication">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label>User Name</label>
+            <SfTextBox @bind-Value="applicationModel.UserName" Placeholder="Enter full name" FloatLabelType="FloatLabelType.Always" />
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <SfTextBox @bind-Value="applicationModel.Email" Placeholder="Enter email address" />
+        </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <SfTextBox Placeholder="Enter city" @bind-Value="applicationModel.City" Required="true"></SfTextBox>
+            </div>
+
+            <div class="form-group">
+                <label>Street</label>
+                <SfTextBox Placeholder="Enter street" @bind-Value="applicationModel.Street" Required="true"></SfTextBox>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <SfTextBox Mask="(999) 999-9999" Placeholder="(___) ___-____" @bind-Value="applicationModel.PhoneNumber" Required="true"></SfTextBox>
+            </div>
+
+            <div class="form-group">
+                <label>Postal Code</label>
+                <SfTextBox Placeholder="Enter postal code" @bind-Value="applicationModel.PostalCode" Required="true"></SfTextBox>
+            </div>
+
+        <div class="form-group">
+            <label>Upload Resume</label>
+            <InputFile OnChange="OnResumeUpload" />
+        </div>
+
+        <div class="form-group">
+            <label>Upload Cover Letter</label>
+            <InputFile OnChange="OnCoverLetterUpload" />
+        </div>
+
+        <div class="form-group apply-btn-container">
+            <SfButton Content="Submit Application" IsPrimary="true" Disabled="@isSubmitting" />
+            <SfSpinner Visible="@isSubmitting" />
+        </div>
+    </EditForm>
+
+    @if (isMessageVisible)
+    {
+        <SfMessage CssClass="message-box" Severity="@messageSeverity">
+            @messageContent
+        </SfMessage>
+    }
+</SfCard>
 
 @code {
+    [Parameter] public int? ApplicationId { get; set; }
+    [Parameter] public int JobId { get; set; }
+    private string? UserId;
+    private ApplicationModel applicationModel = new ApplicationModel();
+    private IBrowserFile resumeFile;
+    private IBrowserFile coverLetterFile;
+    private bool isEdit = false;
+    private bool isMessageVisible = false;
+    private string messageContent = string.Empty;
+    private MessageSeverity messageSeverity = MessageSeverity.Normal;
+    private bool isSubmitting = false;
+
+    private void ShowMessage(string content, MessageSeverity severity)
+    {
+        messageContent = content;
+        messageSeverity = severity;
+        isMessageVisible = true;
+        StateHasChanged();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        UserId = await userService.GetUserId();
+        if (JobId != 0)
+        {
+            isEdit = true;
+           // await LoadApplicationData(JobId);
+        }
+    }
+    private void DisplayMessage(string content, MessageSeverity severity)
+    {
+        messageContent = content;
+        messageSeverity = severity;
+        isMessageVisible = true;
+        StateHasChanged();  
+    }
+
+    private async Task LoadApplicationData(int JobId)
+    {
+        try
+        {
+            applicationModel = await ApplicationService.GetApplicationByIdAsync(JobId);
+            if (applicationModel == null)
+            {
+                DisplayMessage("Application not found.", MessageSeverity.Warning);
+                Navigation.NavigateTo("/jobs");
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowMessage($"Failed to load application data: {ex.Message}", MessageSeverity.Error);
+        }
+    }
+
+     private async Task SubmitApplication()
+    {
+        if (isSubmitting) return;  // Prevent multiple submissions
+        isSubmitting = true;
+
+        try
+        {
+            using var content = CreateMultipartContent();  
+
+            var response = await ApplicationService.ApplyJobAsync(content);
+            if (response)
+            {
+                DisplayMessage("Application submitted successfully!", MessageSeverity.Success);
+
+        
+                await Task.Delay(3000);
+
+            
+                Navigation.NavigateTo("/jobs");
+            }
+            else
+            {
+                DisplayMessage("Failed to submit the application. Please try again later.", MessageSeverity.Error);
+            }
+        }
+        catch (HttpRequestException ex)
+        {
+            DisplayMessage($"Network error: {ex.Message}. Please check your connection and try again.", MessageSeverity.Error);
+        }
+        catch (TaskCanceledException)
+        {
+            DisplayMessage("The request took too long and was canceled. Please try again.", MessageSeverity.Error);
+        }
+        catch (Exception ex)
+        {
+            DisplayMessage($"An unexpected error occurred: {ex.Message}", MessageSeverity.Error);
+        }
+        finally
+        {
+            isSubmitting = false;
+            StateHasChanged();  
+        }
+    }
+
+
+
+    private MultipartFormDataContent CreateMultipartContent()
+    {
+       
+        var content = new MultipartFormDataContent();
+        AddFormData(content, "JobId", JobId.ToString());
+        AddFormData(content, "UserId", UserId);
+        AddFormData(content, "UserName", applicationModel.UserName);
+        AddFormData(content, "Email", applicationModel.Email);
+        AddFormData(content, "City", applicationModel.City);
+        AddFormData(content, "PhoneNumber", applicationModel.PhoneNumber);
+        AddFormData(content, "Street", applicationModel.Street);
+        AddFormData(content, "PostalCode", applicationModel.PostalCode);
+
+        if (resumeFile != null)
+        {
+            AddFileToContent(resumeFile, content, "ResumePath");
+        }
+
+        if (coverLetterFile != null)
+        {
+            AddFileToContent(coverLetterFile, content, "CoverLetter");
+        }
+
+        return content;
+    }
+
+
+        private void AddFormData(MultipartFormDataContent content, string fieldName, string value)
+        {
+            if (!string.IsNullOrWhiteSpace(fieldName))
+            {
+                content.Add(new StringContent(value ?? string.Empty), fieldName);
+            }
+        }
+
+    private void AddFileToContent(IBrowserFile file, MultipartFormDataContent content, string fieldName)
+    {
+        var stream = file.OpenReadStream(5242880);
+        var fileContent = new StreamContent(stream);
+        fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+        content.Add(fileContent, fieldName, file.Name);
+    }
+
+
+    private void OnResumeUpload(InputFileChangeEventArgs args)
+    {
+        resumeFile = args.File;
+    }
+
+    private void OnCoverLetterUpload(InputFileChangeEventArgs args)
+    {
+        coverLetterFile = args.File;
+    }
 
 }

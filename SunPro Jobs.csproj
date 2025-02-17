@@ -7,27 +7,59 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\SignUp.razor" />
+    <Compile Remove="Service\UserService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Background.razor" />
+    <Content Remove="Pages\Companies.razor" />
+    <Content Remove="Pages\HR.razor" />
+    <Content Remove="Pages\UserLogin.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.12" PrivateAssets="all" />
-    <PackageReference Include="Syncfusion.Blazor" Version="28.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+    <PackageReference Include="Polly" Version="8.5.2" />
+    <PackageReference Include="Syncfusion.Blazor" Version="28.2.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\SignUp.razor" />
+    <None Include="Pages\Background.razor" />
+    <None Include="Pages\Companies.razor" />
+    <None Include="Pages\HR.razor" />
+    <None Include="Pages\UserLogin.razor" />
     <None Include="Shared\NavBar.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\SignUp.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Background.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Companies.razor" />
+    <_ContentIncludedByDefault Remove="Pages\HR.razor" />
+    <_ContentIncludedByDefault Remove="Pages\UserLogin.razor" />
     <_ContentIncludedByDefault Remove="wwwroot\css\Register.css" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\SignUp.razor" />
+    <UpToDateCheckInput Remove="Pages\Companies.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\UserLogin.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Background.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\HR.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
 </Project>

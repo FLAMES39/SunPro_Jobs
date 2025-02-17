@@ -1,0 +1,178 @@
+﻿@page "/applications"
+@inject NavigationManager NavigationManager
+@inject ApplicationService ApplicationService
+@using SunPro_Jobs.Models
+@using SunPro_Jobs.Service
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Notifications
+@using Syncfusion.Blazor.Popups
+
+<SfCard class="shadow-lg p-4">
+    <SfCardHeader>
+        <h2 class="text-primary text-center">Application Management</h2>
+    </SfCardHeader>
+    <SfCardContent>
+        <SfGrid @ref="ApplicationsGrid" DataSource="@Applications" TItem="ApplicationModel" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>(){"Search", "ExcelExport", "PdfExport"})">
+            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+            <GridColumns>
+                <GridColumn HeaderText="Actions" Width="150">
+                    <Template Context="app">
+                        <div class="d-flex gap-2">
+                            <SfButton CssClass="e-primary" Content="Email" @onclick="() => SendTemporaryCredentials(((ApplicationModel)app).UserId)" />
+                            <SfButton CssClass="e-danger" Content="Delete" @onclick="() => ConfirmDelete(((ApplicationModel)app).ApplicationId)" />
+                        </div>
+                    </Template>
+                </GridColumn>
+                <GridColumn Field="ApplicationId" HeaderText="Application ID" TextAlign="TextAlign.Center" Width="100" />
+                <GridColumn Field="JobId" HeaderText="Job ID" TextAlign="TextAlign.Center" Width="100" />
+                <GridColumn Field="Status" HeaderText="Status" Width="150" />
+                <GridColumn Field="UserName" HeaderText="Applicant Name" Width="150" />
+                <GridColumn Field="Email" HeaderText="Email" Width="200" />
+                <GridColumn Field="City" HeaderText="City" Width="150" />
+                <GridColumn Field="Street" HeaderText="Street" Width="150" />
+                <GridColumn Field="PhoneNumber" HeaderText="Phone Number" Width="150" />
+                <GridColumn Field="PostalCode" HeaderText="Postal Code" Width="150" />
+                <GridColumn HeaderText="Resume" Width="200">
+                    <Template Context="app">
+                        <div class="d-flex gap-2">
+                            <SfButton CssClass="e-success e-small" Content="Download" @onclick="() => DownloadFile(((ApplicationModel)app).ResumePath)" />
+                            <SfButton CssClass="e-info e-small" Content="View" @onclick="() => ViewFile(((ApplicationModel)app).ResumePath)" />
+                        </div>
+                    </Template>
+                </GridColumn>
+                <GridColumn HeaderText="Cover Letter" Width="200">
+                    <Template Context="app">
+                        <div class="d-flex gap-2">
+                            <SfButton CssClass="e-success e-small" Content="Download" @onclick="() => DownloadFile(((ApplicationModel)app).CoverLetter)" />
+                            <SfButton CssClass="e-info e-small" Content="View" @onclick="() => ViewFile(((ApplicationModel)app).CoverLetter)" />
+                        </div>
+                    </Template>
+                </GridColumn>
+            </GridColumns>
+        </SfGrid>
+
+        <SfDialog @bind-Visible="@IsDeleteDialogVisible" Header="Confirm Delete" ShowCloseIcon="true" Width="400px">
+            <div class="dialog-content">Are you sure you want to delete this application?</div>
+            <SfDialogFooter>
+                <SfButton CssClass="e-danger" @onclick="ConfirmDeleteApplication">Yes</SfButton>
+                <SfButton CssClass="e-secondary" @onclick="() => IsDeleteDialogVisible = false">No</SfButton>
+            </SfDialogFooter>
+        </SfDialog>
+
+        <SfToast @ref="SuccessToast" Content="Operation completed successfully!" CssClass="e-success" Timeout="3000" />
+        <SfToast @ref="ErrorToast" Content="An error occurred." CssClass="e-danger" />
+    </SfCardContent>
+</SfCard>
+
+@code {
+    private SfGrid<ApplicationModel> ApplicationsGrid;
+    private SfToast SuccessToast;
+    private SfToast ErrorToast;
+    private List<ApplicationModel> Applications = new List<ApplicationModel>();
+    private bool IsDeleteDialogVisible = false;
+    private int SelectedApplicationId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadApplications();
+    }
+
+    private async Task LoadApplications()
+    {
+        try
+        {
+            Applications = await ApplicationService.GetAllApplicationsAsync();
+            Console.WriteLine($"Loaded {Applications.Count} applications.");
+            await ApplicationsGrid.Refresh();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading applications: {ex.Message}");
+            await ErrorToast.ShowAsync();
+        }
+    }
+
+    private async Task SendTemporaryCredentials(int userId)
+    {
+        try
+        {
+            var result = await ApplicationService.GenerateTemporaryCredentialsAsync(userId);
+            if (result)
+            {
+                await SuccessToast.ShowAsync(new ToastModel { Content = "Temporary credentials sent successfully!" });
+            }
+            else
+            {
+                await ErrorToast.ShowAsync(new ToastModel { Content = "Failed to send temporary credentials." });
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error sending temporary credentials: {ex.Message}");
+            await ErrorToast.ShowAsync(new ToastModel { Content = "An error occurred while sending temporary credentials." });
+        }
+    }
+
+    private void DownloadFile(string filePath)
+    {
+        if (!string.IsNullOrWhiteSpace(filePath))
+        {
+            var url = GetFullUrl(filePath);
+            NavigationManager.NavigateTo(url, true);
+        }
+        else
+        {
+            Console.WriteLine("File path is empty. Cannot download the file.");
+        }
+    }
+
+    private void ViewFile(string filePath)
+    {
+        if (!string.IsNullOrWhiteSpace(filePath))
+        {
+            var url = GetFullUrl(filePath);
+            NavigationManager.NavigateTo(url, true);
+        }
+        else
+        {
+            Console.WriteLine("File path is empty. Cannot view the file.");
+        }
+    }
+
+    private string GetFullUrl(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path)) return "#";
+        if (path.StartsWith("http")) return path;
+        return $"https://localhost:7068/{path.TrimStart('/')}";
+    }
+
+    private void ConfirmDelete(int applicationId)
+    {
+        SelectedApplicationId = applicationId;
+        IsDeleteDialogVisible = true;
+    }
+
+    private async Task ConfirmDeleteApplication()
+    {
+        IsDeleteDialogVisible = false;
+        try
+        {
+            var result = await ApplicationService.DeleteApplicationAsync(SelectedApplicationId);
+            if (result)
+            {
+                Applications.RemoveAll(a => a.ApplicationId == SelectedApplicationId);
+                await SuccessToast.ShowAsync();
+            }
+            else
+            {
+                await ErrorToast.ShowAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting application: {ex.Message}");
+            await ErrorToast.ShowAsync();
+        }
+    }
+}

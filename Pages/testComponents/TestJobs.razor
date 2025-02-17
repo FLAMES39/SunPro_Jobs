@@ -1,0 +1,112 @@
+﻿@page "/testComponent"
+
+@inject NavigationManager NavigationManager
+@inject JobService JobService
+@using SunPro_Jobs.Models
+@using SunPro_Jobs.Service
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Notifications
+@using Syncfusion.Blazor.Popups
+
+<SfCard class="shadow-lg p-4">
+    <SfCardHeader>
+        <h2 class="text-primary text-center">Job Management</h2>
+    </SfCardHeader>
+    <SfCardContent>
+        <SfGrid @ref="JobsGrid" DataSource="@JobsList" TItem="JobsDtocs" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>(){"Search", "ExcelExport", "PdfExport"})">
+            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+
+            <GridColumns>
+                <GridColumn HeaderText="Actions" Width="150">
+                    <Template Context="job">
+                        <div class="d-flex gap-2">
+                            <SfButton CssClass="e-primary" Content="View" @onclick="() => ViewJob(((JobModel)job).JobId)" />
+                            <SfButton CssClass="e-danger" Content="Delete" @onclick="() => ConfirmDelete(((JobModel)job).JobId)" />
+                        </div>
+                    </Template>
+                </GridColumn>
+
+                <GridColumn Field="JobName" HeaderText="Job Name" Width="200" />
+                <GridColumn Field="JobDescription" HeaderText="Job Description" Width="300" />
+                <GridColumn Field="JobType" HeaderText="Job Type" Width="150" />
+                <GridColumn Field="SalaryRange" HeaderText="Salary Range" Width="150" />
+                <GridColumn Field="Location" HeaderText="Location" Width="150" />
+            </GridColumns>
+        </SfGrid>
+
+        <SfDialog @bind-Visible="@IsDeleteDialogVisible" Header="Confirm Delete" ShowCloseIcon="true" Width="400px">
+            <div class="dialog-content">Are you sure you want to delete this job?</div>
+            <SfDialogFooter>
+                <SfButton CssClass="e-danger" @onclick="ConfirmDeleteJob">Yes</SfButton>
+                <SfButton CssClass="e-secondary" @onclick="() => IsDeleteDialogVisible = false">No</SfButton>
+            </SfDialogFooter>
+        </SfDialog>
+
+        <SfToast @ref="SuccessToast" Content="Job deleted successfully!" CssClass="e-success" Timeout="3000" />
+        <SfToast @ref="ErrorToast" Content="Error deleting job." CssClass="e-danger" />
+    </SfCardContent>
+</SfCard>
+
+@code {
+    private SfGrid<JobModel> JobsGrid;
+    private SfToast SuccessToast;
+    private SfToast ErrorToast;
+    private List<JobModel> JobsList = new List<JobModel>();
+    private bool IsDeleteDialogVisible = false;
+    private int SelectedJobId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadJobs();
+    }
+
+    private async Task LoadJobs()
+    {
+        try
+        {
+            JobsList = await JobService.GetAllJobsAsync();
+            Console.WriteLine($"Loaded {JobsList.Count} jobs.");
+            await JobsGrid.Refresh();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading jobs: {ex.Message}");
+            await ErrorToast.ShowAsync();
+        }
+    }
+
+    private void ViewJob(int JobId)
+    {
+        NavigationManager.NavigateTo($"/job-details/{JobId}");
+    }
+
+    private void ConfirmDelete(int JobId)
+    {
+        SelectedJobId = JobId;
+        IsDeleteDialogVisible = true;
+    }
+
+    private async Task ConfirmDeleteJob()
+    {
+        IsDeleteDialogVisible = false;
+        try
+        {
+            var result = await JobService.DeleteJobAsync(SelectedJobId);
+            if (result)
+            {
+                JobsList.RemoveAll(j => j.JobId == SelectedJobId);
+                await SuccessToast.ShowAsync();
+            }
+            else
+            {
+                await ErrorToast.ShowAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting job: {ex.Message}");
+            await ErrorToast.ShowAsync();
+        }
+    }
+}

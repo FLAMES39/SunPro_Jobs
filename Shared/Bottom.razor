@@ -1,135 +1,65 @@
 ﻿@inject NavigationManager NavigationManager
 
-@using Syncfusion.Blazor
 
-<SfCard CssClass="footer-container">
-    <SfGrid  CssClass="footer-grid" TValue="String">
-        <!-- Company Info -->
-        <SfGridColumn>
-            <div class="company-info">
-                <img src="logo.png" alt="Transparent BPO" class="company-logo"/>
-                <h3 class="company-title">Transparent <span class="highlight">BPO</span></h3>
-                <p>Customized solutions.<br/>Passionate culture.<br/>Committed to your success.</p>
-                <div class="social-icons">
-                    <SfButton CssClass="social-btn"><i class="fab fa-twitter"></i></SfButton>
-                    <SfButton CssClass="social-btn"><i class="fab fa-facebook-f"></i></SfButton>
-                    <SfButton CssClass="social-btn"><i class="fab fa-linkedin-in"></i></SfButton>
-                    <SfButton CssClass="social-btn"><i class="fab fa-youtube"></i></SfButton>
-                </div>
+
+<div class="footer-container">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>SunPro  <span class="bpo">JOBS</span></h3>
+            <p class="footer-tagline">Outsourcing Transformed</p>
+            <p>Customized solutions.<br />Passionate culture.<br />Committed to your success.</p>
+            <div class="social-icons">
+                <SfButton CssClass="icon-button" IconCss="e-icons e-twitter"><i class="fab fa-twitter"></i></SfButton>
+                <SfButton CssClass="icon-button" IconCss="e-icons e-facebook"><i class="fab fa-facebook-f"></i></SfButton>
+                <SfButton CssClass="icon-button" IconCss="e-icons e-linkedin"><i class="fab fa-linkedin-in"></i></SfButton>
+                <SfButton CssClass="icon-button" IconCss="e-icons e-youtube"><i class="fab fa-youtube"></i></SfButton>
             </div>
-        </SfGridColumn>
+        </div>
 
-        <!-- Jobs by Service -->
-        <SfGridColumn>
-            <h4 class="section-title">Jobs by Service</h4>
-            <ul class="footer-list">
+        <div class="footer-section">
+            <h4>Jobs by Service</h4>
+            <ul>
                 <li>Inbound Voice</li>
                 <li>Outbound Voice</li>
                 <li>Multi-channel Support</li>
                 <li>Back-office Support</li>
                 <li>Work-Secure Suite</li>
             </ul>
-        </SfGridColumn>
+        </div>
 
-        <!-- Jobs by Location -->
-        <SfGridColumn>
-            <h4 class="section-title">Jobs by Location</h4>
-            <ul class="footer-list">
+        <div class="footer-section">
+            <h4>Jobs by Location</h4>
+            <ul>
                 <li>Corporate Headquarters</li>
-                <li>Belize</li>
-                <li>Jamaica</li>
-                <li>Philippines</li>
+                <li>Nairobi</li>
+                <li>Carlifonia</li>
+                <li>Texas New York</li>
             </ul>
-        </SfGridColumn>
+        </div>
 
-        <!-- Jobs by Setup & Employment -->
-        <SfGridColumn>
-            <h4 class="section-title">Jobs by Setup</h4>
-            <ul class="footer-list">
+        <div class="footer-section">
+            <h4>Jobs by Setup</h4>
+            <ul>
                 <li>Remote</li>
                 <li>On-site</li>
                 <li>Hybrid</li>
             </ul>
-            <h4 class="section-title">Jobs by Employment</h4>
-            <ul class="footer-list">
+
+            <h4>Jobs by Employment</h4>
+            <ul>
                 <li>Full-Time</li>
                 <li>Part-Time</li>
                 <li>Contractual</li>
             </ul>
-        </SfGridColumn>
-    </SfGrid>
+        </div>
+    </div>
 
-    <!-- Footer Bottom -->
     <div class="footer-bottom">
-        <p>&copy; Built in 2023</p>
+        <p>© Built In 2023</p>
         <div class="footer-links">
             <a href="#">About TBPO</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Use</a>
         </div>
     </div>
-</SfCard>
-
-<!-- Styles -->
-<style>
-    .footer-container {
-        background-color: #022851;
-        color: white;
-        padding: 20px;
-        font-family: Arial, sans-serif;
-    }
-    .footer-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-    .company-info {
-        text-align: left;
-    }
-    .company-logo {
-        height: 40px;
-    }
-    .company-title {
-        font-size: 18px;
-        font-weight: bold;
-    }
-    .highlight {
-        color: #FFD700;
-    }
-    .social-icons {
-        margin-top: 10px;
-    }
-    .social-btn {
-        margin: 5px;
-        background-color: #FFD700;
-        color: black;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-    }
-    .section-title {
-        font-size: 16px;
-        font-weight: bold;
-        border-bottom: 2px solid #FFD700;
-        margin-bottom: 10px;
-    }
-    .footer-list {
-        list-style: none;
-        padding: 0;
-    }
-    .footer-bottom {
-        text-align: center;
-        margin-top: 20px;
-        border-top: 1px solid gray;
-        padding-top: 10px;
-    }
-    .footer-links a {
-        color: white;
-        margin: 0 10px;
-        text-decoration: none;
-    }
-    .footer-links a:hover {
-        text-decoration: underline;
-    }
-</style>
-
+</div>

@@ -1,0 +1,126 @@
+﻿@page "/profile"
+@using SunPro_Jobs.Service
+@inject userServices UserServices
+@inject NavigationManager NavigationManager
+@using SunPro_Jobs.Models
+@inject IJSRuntime JSRuntim
+@using Microsoft.JSInterop
+
+<div class="login-container">
+    <SfCard CssClass="e-card e-login-card">
+        <SfCardHeader class="text-center">
+            <h2 class="login-title">Login to Your Account</h2>
+        </SfCardHeader>
+
+        <SfCardContent>
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger">@errorMessage</div>
+            }
+
+            @if (showSuccessMessage)
+            {
+                <div class="alert alert-success">Login successful! Redirecting...</div>
+            }
+
+            <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <SfTextBox @bind-Value="loginModel.Email" Placeholder="Enter your email"
+                               CssClass="input-field" ShowClearButton="true" />
+                    <ValidationMessage For="@(() => loginModel.Email)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <SfTextBox @bind-Value="loginModel.Password" Placeholder="Enter your password"
+                               CssClass="input-field" InputType="Password" ShowClearButton="true" />
+                    <ValidationMessage For="@(() => loginModel.Password)" />
+                </div>
+
+                <div class="form-group">
+                    <SfCheckBox @bind-Checked="rememberMe">Keep me logged in</SfCheckBox>
+                </div>
+
+                <div class="form-group text-center">
+                    <SfButton CssClass="submit-btn" Content="Log in" IsPrimary="true" IsBusy="@isBusy" Disabled="@isBusy"></SfButton>
+                </div>
+            </EditForm>
+        </SfCardContent>
+
+        <SfCardFooter class="text-center">
+            <div class="footer-links">
+                <a href="#">Forgot username?</a> | <a href="#">Forgot password?</a>
+            </div>
+        </SfCardFooter>
+    </SfCard>
+</div>
+
+@if (isLoggedIn)
+{
+    <div class="logout-container">
+        <p>You are logged in as @userName.</p>
+        <SfButton CssClass="logout-btn" Content="Logout" OnClick="Logout" />
+    </div>
+}
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private bool isBusy = false;
+    private bool rememberMe = false;
+    private string? errorMessage;
+    private bool showSuccessMessage = false;
+    private bool isLoggedIn = false;
+    private string? userName;
+    private string role;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var token = await UserServices.GetAuthToken();
+        if (!string.IsNullOrEmpty(token))
+        {
+            isLoggedIn = true;
+            role = await UserServices.GetRole();
+            userName = await UserServices.GetUserName();  // Assume you have a method to fetch the username
+        }
+    }
+
+    private async Task HandleLogin()
+    {
+        isBusy = true;
+        errorMessage = null;
+
+        try
+        {
+            bool loginSuccessful = await UserServices.LoginUser(loginModel);
+            if (loginSuccessful)
+            {
+                showSuccessMessage = true;
+                await Task.Delay(1000);
+                NavigationManager.NavigateTo("/jobs", true);
+            }
+            else
+            {
+                errorMessage = "Invalid email or password. Please try again.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isBusy = false;
+        }
+    }
+
+    private async Task Logout()
+    {
+        await UserServices.Logout();
+        isLoggedIn = false;
+        NavigationManager.NavigateTo("/login", true);
+    }
+}

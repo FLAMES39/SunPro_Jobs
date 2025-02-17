@@ -1,21 +1,99 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@inject userServices UserServices
+@inject IJSRuntime JSRuntime
+@using SunPro_Jobs.Service
+@using SunPro_Jobs.Models
 
-<SfAppBar  ColorMode="AppBarColor.Primary">
-    <div class="logo">
-        
-         
-        <p>SunPro Jobs</p>
+<nav class="navbar bg-primary text-white shadow-sm">
+    <div class="container-fluid">
+        <h4 class="text-white fw-bold">SunPro Jobs</h4>
+        <div class="d-flex ms-auto align-items-center">
+            <SfButton CssClass="nav-btn me-2" Content="Find Jobs" @onclick="NavigateToJobs" />
+            <SfButton CssClass="nav-btn me-2" Content="Register" @onclick="NavigateToRegister" />
 
+            @if (isLoggedIn)
+            {
+                @if (isHR)
+                {
+                    <SfButton CssClass="nav-btn me-2 bg-warning text-dark" Content="Post Job" @onclick="NavigateToPostJob" />
+                    <SfButton CssClass="nav-btn me-2 bg-warning text-dark" Content="All Jobs" @onclick="NavigateToAllJobs" />
+                    <SfButton CssClass="nav-btn me-2 bg-warning text-dark" Content="All Applications" @onclick="NavigateToAllApplications" />
+                    <SfButton CssClass="nav-btn me-2 bg-warning text-dark" Content="Users" @onclick="NavigateToAllUsers" />
+                }
+                else
+                {
+                    <SfButton CssClass="nav-btn me-2" Content="Profile" @onclick="NavigateToProfile" />
+                }
+                <SfButton CssClass="nav-btn bg-danger text-white me-2" Content="Logout" @onclick="Logout" />
+                <div class="d-flex align-items-center">
+                    <img src="/images/logo.jpg" alt="User Avatar" class="rounded-circle me-2" style="width: 30px; height: 30px;" />
+                    <span class="text-white fw-bold">Welcome</span>
+                </div>
+            }
+            else
+            {
+               // <SfButton CssClass="nav-btn me-2" Content="HR Dashboard" @onclick="NavigateToHRDashboard" />
+                <SfButton CssClass="nav-btn me-2" Content="Login" @onclick="NavigateToLogin" />
+            }
+        </div>
     </div>
-    <SfButton CssClass="e-inherit" Content="Find Jobs" OnClick="@(() => NavigateToPage("/jobs"))"></SfButton>
-    <SfButton CssClass="e-inherit" Content="Register" OnClick="@(() => NavigateToPage("/register"))"></SfButton>
-    <SfButton CssClass="e-primary" Content="SignUp" OnClick="@(() => NavigateToPage("/signUp"))"></SfButton>
-</SfAppBar>
+</nav>
 
 @code {
-    private void NavigateToPage(string url)
+    private bool isLoggedIn = false;
+    private bool isHR = false;
+    private string names = "Guest";
+
+    protected override async Task OnInitializedAsync()
     {
-        NavigationManager.NavigateTo(url, forceLoad: true); // Force reload
+        await CheckAuthenticationState();
+    }
+
+    private async Task CheckAuthenticationState()
+    {
+        try
+        {
+            var role = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "role");
+            isLoggedIn = !string.IsNullOrEmpty(role);
+
+            if (isLoggedIn)
+            {
+                isHR = role?.ToLower() == "hr";
+                names = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "username") ?? "User";
+            }
+            else
+            {
+                isHR = false;
+                names = "Guest";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error checking authentication state: {ex.Message}");
+        }
+    }
+
+    private void NavigateToJobs() => NavigationManager.NavigateTo("/jobs");
+    private void NavigateToRegister() => NavigationManager.NavigateTo("/register");
+    private void NavigateToLogin() => NavigationManager.NavigateTo("/profile");
+    private void NavigateToHRDashboard() => NavigationManager.NavigateTo("/hr-dashboard");
+    private void NavigateToProfile() => NavigationManager.NavigateTo("/jobseaker");
+    private void NavigateToPostJob() => NavigationManager.NavigateTo("/job-post");
+    private void NavigateToAllJobs() => NavigationManager.NavigateTo("/testComponent");
+    private void NavigateToAllApplications() => NavigationManager.NavigateTo("/applications");
+    private void NavigateToAllUsers() => NavigationManager.NavigateTo("/users");
+
+    private async Task Logout()
+    {
+        await UserServices.Logout();
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "username");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "role");
+        isLoggedIn = false;
+        isHR = false;
+        names = "Guest";
+        NavigationManager.NavigateTo("/", forceLoad: true);
+        await CheckAuthenticationState();
+        StateHasChanged();
     }
 }

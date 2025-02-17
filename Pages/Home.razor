@@ -1,28 +1,79 @@
 ﻿@page "/"
-
 @inject NavigationManager NavigationManager
+@inject JobService JobService
+@using SunPro_Jobs.Service
+@using SunPro_Jobs.Models
 
-<div class="header-section" style="background-color:lightslategray">
-    <div class="explore">
-        <h1>Explore open career opportunities.</h1>
-        <p>We commit to exceptional company culture and outstanding benefits.</p>
-    </div>
+<SfCard class="shadow-lg p-4">
+    <SfCardHeader>
+        <h2 class="text-primary text-center">Find Your Next Job</h2>
+    </SfCardHeader>
 
-    <div class="search-container">
-        <SfDropDownList TItem="string" TValue="string" @bind-Value="selectedLocation" DataSource="locations"
-                        Placeholder="Philippines" CssClass="search-dropdown" />
-        <SfButton CssClass="search-btn">Search</SfButton>
-    </div>
+    <SfCardContent>
+        <div class="search-form">
+            <div class="d-flex flex-wrap">
+                <div class="form-group flex-fill me-3" style="flex: 1 1 45%;">
+                    <label>Job Name</label>
+                    <SfTextBox @bind-Value="searchCriteria.JobName" Placeholder="Enter job name" CssClass="input-field" />
+                </div>
 
-    <div class="cta-container">
-        <SfButton CssClass="cta-button">Discover Recent News <span class="arrow">→</span></SfButton>
-        <SfButton CssClass="cta-button">Know our process <span class="arrow">→</span></SfButton>
-    </div>
-</div>
+                <div class="form-group flex-fill" style="flex: 1 1 45%;">
+                    <label>Job Type</label>
+                    <SfDropDownList TItem="string" TValue="string" @bind-Value="searchCriteria.JobType" 
+                                    DataSource="jobTypes" Placeholder="Select Job Type" CssClass="search-dropdown" />
+                </div>
+            </div>
+
+            <div class="form-group text-center mt-4">
+                <SfButton CssClass="search-btn e-primary" @onclick="SearchJobs">Search</SfButton>
+            </div>
+        </div>
+
+        <SfGrid DataSource="@jobs" TItem="JobModel" AllowPaging="true" AllowSorting="true" AllowFiltering="true">
+            <GridColumns>
+                <GridColumn Field="JobName" HeaderText="Job Name" Width="150" />
+                <GridColumn Field="JobType" HeaderText="Job Type" Width="150" />
+                <GridColumn Field="SalaryRange" HeaderText="Salary Range" Width="150" />
+                <GridColumn Field="Location" HeaderText="Location" Width="150" />
+                <GridColumn HeaderText="Actions" Width="150">
+                    <Template Context="job">
+                        <SfButton CssClass="e-primary" Content="View" @onclick="() => ViewJob(((JobModel)job).JobId)" />
+                    </Template>
+                </GridColumn>
+            </GridColumns>
+        </SfGrid>
+
+        <SfToast @ref="ErrorToast" Content="No jobs found matching the search criteria." CssClass="e-danger" Timeout="3000" />
+    </SfCardContent>
+</SfCard>
 
 <Jobs />
 
 @code {
-    private string selectedLocation = "Philippines";
-    private List<string> locations = new() { "New Zealand", "Philippines", "Canada" };
+    private JobSearchModel searchCriteria = new();
+    private List<JobModel> jobs = new List<JobModel>();
+    private List<string> jobTypes = new() { "Full-time", "Part-time", "Contract", "Freelance" };
+    private SfToast ErrorToast;
+
+    private async Task SearchJobs()
+    {
+        try
+        {
+            jobs = await JobService.SearchJobsAsync(searchCriteria);
+            if (jobs == null || !jobs.Any())
+            {
+                await ErrorToast.ShowAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error during job search: {ex.Message}");
+            await ErrorToast.ShowAsync();
+        }
+    }
+
+    private void ViewJob(int jobId)
+    {
+        NavigationManager.NavigateTo($"/job-details/{jobId}");
+    }
 }

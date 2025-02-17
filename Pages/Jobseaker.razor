@@ -1,0 +1,153 @@
+﻿@page "/jobseaker"
+@inject NavigationManager NavigationManager
+@inject userServices UserServices
+@using SunPro_Jobs.Models
+@using SunPro_Jobs.Service
+
+
+<div class="container mt-5">
+    <SfCard CssClass="profile-card shadow-lg p-4">
+        <SfCardHeader CssClass="profile-header bg-primary text-white rounded-top">
+            <div class="d-flex align-items-center">
+                <img src="/images/logo.jpg" alt="Profile Picture" class="profile-pic rounded-circle border border-3 border-white me-3" />
+                <div>
+                    <h2 class="mb-0">@user.Names</h2>
+                    <p class="mb-1">@user.Email</p>
+                    <p><strong>Role:</strong> @user.Role</p>
+                </div>
+            </div>
+        </SfCardHeader>
+
+ 
+<SfCardContent CssClass="bg-white rounded-bottom">
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <SfMessage Content="@message" CssClass="@messageClass" ShowIcon="true" Visible="true" />
+    }
+
+    <EditForm Model="@user" OnValidSubmit="UpdateProfile">
+        <DataAnnotationsValidator />
+        <ValidationSummary CssClass="text-danger" />
+        
+        <div class="row g-3 mt-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Names" class="form-label fw-bold">Names</label>
+                    <SfTextBox @bind-Value="user.Names" Placeholder="Enter your full name" CssClass="form-control input-lg shadow-sm" />
+                    <ValidationMessage For="@(() => user.Names)" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Email" class="form-label fw-bold">Email</label>
+                    <SfTextBox @bind-Value="user.Email" Placeholder="Enter your email" CssClass="form-control input-lg shadow-sm" />
+                    <ValidationMessage For="@(() => user.Email)" />
+                </div>
+            </div>
+        </div>
+        
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="PhoneNumber" class="form-label fw-bold">Phone Number</label>
+                    <SfTextBox @bind-Value="user.PhoneNumber" Placeholder="Enter your phone number" CssClass="form-control input-lg shadow-sm" />
+                    <ValidationMessage For="@(() => user.PhoneNumber)" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Description" class="form-label fw-bold">Description</label>
+                    <SfTextBox @bind-Value="user.Description" Placeholder="Enter a brief description" CssClass="form-control input-lg shadow-sm" />
+                    <ValidationMessage For="@(() => user.Description)" />
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <SfButton CssClass="btn btn-primary btn-lg px-5 shadow-sm" Type="Submit" IsPrimary="true" Content="Update Profile" Disabled="@isSubmitting" />
+        </div>
+    </EditForm>
+</SfCardContent>
+
+    </SfCard>
+</div>
+
+@code {
+    private string message = string.Empty;
+    private string messageClass = "e-info";
+    private bool isSubmitting = false;
+    private UserDetailDto user = new UserDetailDto();
+    private int userId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        userId = await GetDynamicUserId();
+        if (userId > 0)
+        {
+            await LoadUserProfile(userId);
+        }
+        else
+        {
+            ShowMessage("Unable to load user profile. Please log in again.", "e-warning");
+        }
+    }
+
+    private async Task<int> GetDynamicUserId()
+    {
+        var userIdStr = await UserServices.GetUserId();
+        if (int.TryParse(userIdStr, out int userId))
+        {
+            return userId;
+        }
+        return 0;
+    }
+
+    private async Task LoadUserProfile(int userId)
+    {
+        try
+        {
+            user = await UserServices.GetUserById(userId) ?? new UserDetailDto();
+            if (user.UserId == 0)
+            {
+                ShowMessage("User profile not found.", "e-error");
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowMessage("Failed to load user profile.", "e-error");
+            Console.WriteLine($"Error loading user profile: {ex.Message}");
+        }
+    }
+
+    private async Task UpdateProfile()
+    {
+        isSubmitting = true;
+        try
+        {
+            var result = await UserServices.UpdateUser(user);
+            if (result)
+            {
+                ShowMessage("Profile updated successfully!", "e-success");
+            }
+            else
+            {
+                ShowMessage("Failed to update profile. Please try again.", "e-error");
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowMessage("An error occurred while updating your profile.", "e-error");
+            Console.WriteLine($"Error updating profile: {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+
+    private void ShowMessage(string msg, string cssClass)
+    {
+        message = msg;
+        messageClass = cssClass;
+    }
+}

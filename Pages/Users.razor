@@ -1,0 +1,104 @@
+﻿@page "/users"
+@inject NavigationManager NavigationManager
+@inject userServices UserService
+@using SunPro_Jobs.Service
+@using SunPro_Jobs.Models
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Notifications
+@using Syncfusion.Blazor.Popups
+
+<SfCard class="shadow-lg p-4">
+    <SfCardHeader>
+        <h2 class="text-primary text-center">User Management</h2>
+    </SfCardHeader>
+    <SfCardContent>
+        <SfGrid @ref="UsersGrid" DataSource="@UserList" TItem="UserDetailDto" AllowPaging="true" AllowSorting="true" AllowFiltering="true" Toolbar="@(new List<string>(){"Search", "ExcelExport", "PdfExport"})">
+            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+
+            <GridColumns>
+                <GridColumn HeaderText="Actions" Width="150">
+                    <Template Context="user">
+                        <SfButton CssClass="e-danger" Content="Delete" @onclick="() => ConfirmDelete(((UserDetailDto)user).UserId)" />
+                    </Template>
+                </GridColumn>
+
+                <GridColumn Field="UserId" HeaderText="User ID" TextAlign="TextAlign.Center" Width="100" />
+                <GridColumn Field="Names" HeaderText="Full Name" Width="150" />
+                <GridColumn Field="Email" HeaderText="Email" Width="200" />
+                <GridColumn Field="Role" HeaderText="Role" Width="150" />
+                <GridColumn Field="PhoneNumber" HeaderText="Phone Number" Width="150" />
+                <GridColumn Field="Description" HeaderText="Description" Width="200" />
+            </GridColumns>
+        </SfGrid>
+
+        <SfDialog @bind-Visible="@IsDeleteDialogVisible" Header="Confirm Delete" ShowCloseIcon="true" Width="400px">
+            <div class="dialog-content">Are you sure you want to delete this user?</div>
+            <SfDialogFooter>
+                <SfButton CssClass="e-danger" @onclick="ConfirmDeleteUser">Yes</SfButton>
+                <SfButton CssClass="e-secondary" @onclick="() => IsDeleteDialogVisible = false">No</SfButton>
+            </SfDialogFooter>
+        </SfDialog>
+
+        <SfToast @ref="SuccessToast" Content="User deleted successfully!" CssClass="e-success" Timeout="3000" />
+        <SfToast @ref="ErrorToast" Content="Error deleting user." CssClass="e-danger" />
+    </SfCardContent>
+</SfCard>
+
+@code {
+    private SfGrid<UserDetailDto> UsersGrid;
+    private SfToast SuccessToast;
+    private SfToast ErrorToast;
+    private List<UserDetailDto> UserList = new List<UserDetailDto>();
+    private bool IsDeleteDialogVisible = false;
+    private int SelectedUserId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        try
+        {
+            UserList = await UserService.GetAllUsersAsync();
+            Console.WriteLine($"Loaded {UserList.Count} users.");
+            await UsersGrid.Refresh();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading users: {ex.Message}");
+            await ErrorToast.ShowAsync();
+        }
+    }
+
+    private void ConfirmDelete(int userId)
+    {
+        SelectedUserId = userId;
+        IsDeleteDialogVisible = true;
+    }
+
+    private async Task ConfirmDeleteUser()
+    {
+        IsDeleteDialogVisible = false;
+        try
+        {
+            var result = await UserService.DeleteUserAsync(SelectedUserId);
+            if (result)
+            {
+                UserList.RemoveAll(u => u.UserId == SelectedUserId);
+                await SuccessToast.ShowAsync();
+            }
+            else
+            {
+                await ErrorToast.ShowAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting user: {ex.Message}");
+            await ErrorToast.ShowAsync();
+        }
+    }
+}

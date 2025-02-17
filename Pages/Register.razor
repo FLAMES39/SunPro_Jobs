@@ -1,80 +1,124 @@
 ﻿@page "/register"
-
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject userServices userServices
+@using SunPro_Jobs.Service
+@using System.ComponentModel.DataAnnotations
 
 <div class="registration-container">
     <SfCard class="registration-card">
         <SfCardHeader class="text-center">
-            <img src="/images//seeker.jpeg" alt="Logo" class="logo" />
+            <img src="/images/seeker.jpeg" alt="Logo" class="logo" />
             <h2 class="e-text-primary title">Create an Account</h2>
             <p class="subtitle">Sign up now to get started with an account.</p>
         </SfCardHeader>
 
         <SfCardContent>
-            <!-- Sign Up with Google Button -->
-            <div class="e-text-center e-margin-bottom-15">
-                <SfButton CssClass="e-outline e-primary w-100 google-btn">
-                    <img src="/icon-192.png" alt="Google" class="google-logo" />
-                    Sign up with Google
-                </SfButton>
-            </div>
-
-            <div class="separator">OR</div>
-
-            <EditForm Model="new{}">
+            <EditForm Model="userModel" OnValidSubmit="ValidateRegistration">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
+
+                <!-- Success & Error Messages -->
+                <p>
+                    <SfMessage Severity="MessageSeverity.Success" Visible="@showSuccessMessage" CssClass="visible-message">
+                        Registration was successful! Redirecting...
+                    </SfMessage>
+                    <SfMessage Severity="MessageSeverity.Error" Visible="@showErrorMessage" CssClass="visible-message">
+                        Registration failed. Please try again.
+                    </SfMessage>
+                </p>
 
                 <!-- Full Name -->
                 <div class="form-group">
                     <label for="fullName">Full Name<span class="required">*</span></label>
-                    <SfTextBox Id="fullName" Placeholder="John Doe" CssClass="input-field" />
+                    <SfTextBox @bind-Value="userModel.Names" Placeholder="John Doe" CssClass="input-field" />
+                    <ValidationMessage For="@(() => userModel.Names)" />
                 </div>
 
                 <!-- Email Address -->
                 <div class="form-group">
                     <label for="email">Email Address<span class="required">*</span></label>
-                    <SfTextBox Id="email" Placeholder="example@email.com" CssClass="input-field" InputType="Email" />
+                    <SfTextBox @bind-Value="userModel.Email" Placeholder="example@email.com" CssClass="input-field" InputType="Email" />
+                    <ValidationMessage For="@(() => userModel.Email)" />
                 </div>
 
                 <!-- Password -->
-                <div class="form-group password-group">
+                <div class="form-group">
                     <label for="password">Password<span class="required">*</span></label>
-                    <div class="password-container">
-                        <SfTextBox Id="password" Placeholder="Enter password" CssClass="input-field" InputType="password" />
-                        <SfButton CssClass="password-toggle">
-                            <SfIcon IconCss="e-icons e-eye" />
-                        </SfButton>
-                    </div>
+                    <SfTextBox @bind-Value="userModel.Password" Placeholder="Enter password" CssClass="input-field" InputType="Password" />
+                    <ValidationMessage For="@(() => userModel.Password)" />
                 </div>
 
-                <!-- Confirm Password -->
-                <div class="form-group password-group">
-                    <label for="confirmPassword">Confirm Password<span class="required">*</span></label>
-                    <div class="password-container">
-                        <SfTextBox Id="confirmPassword" Placeholder="Confirm password" CssClass="input-field" InputType="password" />
-                        <SfButton CssClass="password-toggle">
-                            <SfIcon IconCss="e-icons e-eye" />
-                        </SfButton>
-                    </div>
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number<span class="required">*</span></label>
+                    <SfTextBox @bind-Value="userModel.PhoneNumber" Placeholder="1234567890" CssClass="input-field" />
+                    <ValidationMessage For="@(() => userModel.PhoneNumber)" />
                 </div>
 
                 <!-- Terms & Conditions -->
                 <div class="form-group terms-checkbox">
-                    <SfCheckBox TChecked="bool" Label="I have read and agree to the " />
+                    <SfCheckBox @bind-Checked="acceptedTerms" Label="I have read and agree to the " />
                     <a href="/terms" class="terms-link">Terms of Service</a>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="form-group text-center">
-                    <SfButton CssClass="submit-btn" Type="Submit">Get Started</SfButton>
-                </div>
-
-                <!-- Login Redirect -->
-                <div class="text-center mt-3">
-                    <p class="login-text">Already have an account? <a href="/login" class="login-link">Log in</a></p>
+                    <SfButton CssClass="submit-btn" Type="Submit" Disabled="@(!acceptedTerms || isSubmitting)">
+                        @if (isSubmitting)
+                        {
+                            <span>Processing...</span>
+                        }
+                        else
+                        {
+                            <span>Get Started</span>
+                        }
+                    </SfButton>
                 </div>
             </EditForm>
         </SfCardContent>
     </SfCard>
 </div>
 
+@code {
+    private UserModel userModel = new UserModel();
+    private bool acceptedTerms = false;
+    private bool isSubmitting = false;
+    private bool showSuccessMessage = false;
+    private bool showErrorMessage = false;
+
+    private async Task ValidateRegistration()
+    {
+        isSubmitting = true;
+        showSuccessMessage = false;
+        showErrorMessage = false;
+
+        try
+        {
+            var isRegistered = await userServices.RegisterUser(userModel);
+            if (isRegistered)
+            {
+                showSuccessMessage = true;
+                StateHasChanged();
+                Console.Error.WriteLine("Registration Successful...");
+                // Wait for a short time and then redirect to the login page
+                await Task.Delay(3000);
+                NavigationManager.NavigateTo("/profile");
+            }
+            else
+            {
+                showErrorMessage = true;
+                
+            }
+        }
+        catch (Exception ex)
+        {
+            showErrorMessage = true;
+            Console.Error.WriteLine($"Registration failed: {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}

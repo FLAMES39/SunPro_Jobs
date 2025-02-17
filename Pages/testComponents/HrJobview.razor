@@ -1,0 +1,117 @@
+﻿@page "/hr-job-details/{JobId:int}"
+
+@inject JobService JobServices
+@inject NavigationManager NavigationManager
+@using SunPro_Jobs.Models
+@using SunPro_Jobs.Service
+
+@if (isLoading)
+{
+    <div class="spinner">
+        <SfSpinner></SfSpinner>
+        <p>Loading job details...</p>
+    </div>
+}
+else if (errorMessage != null)
+{
+    <div class="error-banner">
+        <p>@errorMessage</p>
+        <SfButton CssClass="retry-btn" Content="Retry" OnClick="@RetryFetchJob"></SfButton>
+    </div>
+}
+else if (job != null)
+{
+    <SfCard CssClass="job-detail-container">
+        <div class="banner">
+            <div class="banner-content">
+                <h1 class="job-title">@job.JobName</h1>
+            </div>
+        </div>
+
+        <div class="job-detail-body">
+            <h2 class="job-detail-title">@job.JobName</h2>
+            <p class="job-meta">@job.JobType • @job.JobStatus</p>
+            <p class="posted-time">Posted on @job.PostingDate.ToString("MMMM dd, yyyy")</p>
+
+            <div class="job-info-grid">
+                <SfCard CssClass="info-card">
+                    <SfCardHeader>
+                        <h4>Job Type</h4>
+                    </SfCardHeader>
+                    <SfCardContent>
+                        <span class="info-value">@job.JobType</span>
+                    </SfCardContent>
+                </SfCard>
+
+                <SfCard CssClass="info-card">
+                    <SfCardHeader>
+                        <h4>Salary Range</h4>
+                    </SfCardHeader>
+                    <SfCardContent>
+                        <span class="salary-value">@job.SalaryRange</span>
+                    </SfCardContent>
+                </SfCard>
+            </div>
+
+            <div class="job-section">
+                <h3>Job Description</h3>
+                <p>@job.JobDescription</p>
+            </div>
+
+            <div class="job-section">
+                <h3>Job Requirements</h3>
+                <p>@job.JobRequirements</p>
+            </div>
+
+            <div class="back-container">
+                <SfButton CssClass="back-btn" Content="Go Back" OnClick="@GoBack"></SfButton>
+            </div>
+        </div>
+    </SfCard>
+}
+
+@code {
+    [Parameter]
+    public int JobId { get; set; }
+
+    private JobModel? job;
+    private bool isLoading = true;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchJobDetails();
+    }
+
+    private async Task FetchJobDetails()
+    {
+        isLoading = true;
+        errorMessage = null;
+        try
+        {
+            job = await JobServices.GetSingleJobAsync(JobId);
+            if (job == null)
+            {
+                errorMessage = "Job details not found.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error fetching job details: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/jobs");
+    }
+
+    private async Task RetryFetchJob()
+    {
+        await FetchJobDetails();
+    }
+}
