@@ -63,11 +63,12 @@ else
                 <p>@job.JobRequirements</p>
             </div>
 
-            <div class="apply-container">
+            <div class="apply-container  text-center mt-4 g-4">
                 @if (!isHR)
                 {
                     <SfButton CssClass="apply-btn" Content="Apply for this position" OnClick="@ApplyForJob"></SfButton>
                 }
+               <hr />
                 <SfButton CssClass="back-btn" Content="Go Back" OnClick="@GoBack"></SfButton>
             </div>
 

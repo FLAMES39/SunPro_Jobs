@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
+      "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\css\\Jobs.css",
+      "PackagePath": "staticwebassets\\css\\Jobs.css"
+    },
+    {
       "Id": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\css\\Register.css",
       "PackagePath": "staticwebassets\\css\\Register.css"
     },

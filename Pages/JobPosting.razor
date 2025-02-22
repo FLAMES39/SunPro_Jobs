@@ -6,7 +6,7 @@
 @using SunPro_Jobs.Models
 @using SunPro_Jobs.Service
 
-<div class="container form-container">
+<div class="container textcenter">
     <SfCard class="job-posting-card shadow-lg p-4">
         <SfCardHeader>
             <h2 class="text-primary text-center">SunPro Job Posting</h2>
@@ -83,7 +83,7 @@
 
 
                 <!-- Submit Button -->
-                <div class="form-group text-center mt-4">
+                <div class="text-center mt-4">
                     <SfButton CssClass="e-primary w-50" IsPrimary="true" Disabled="@IsSubmitting" OnClick="PostJob">
 
                         @if (IsSubmitting)
@@ -119,7 +119,7 @@ private async Task PostJob()
             GeneratedJobLink = result.Jobink;
             Console.WriteLine($"Job posted successfully. Link: {GeneratedJobLink}");
 
-            StateHasChanged();  // ✅ Ensures Blazor updates the UI
+            StateHasChanged();  // Ensures Blazor updates the UI
         }
         else
         {

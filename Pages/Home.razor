@@ -10,24 +10,27 @@
     </SfCardHeader>
 
     <SfCardContent>
-        <div class="search-form">
-            <div class="d-flex flex-wrap">
-                <div class="form-group flex-fill me-3" style="flex: 1 1 45%;">
-                    <label>Job Name</label>
-                    <SfTextBox @bind-Value="searchCriteria.JobName" Placeholder="Enter job name" CssClass="input-field" />
-                </div>
-
-                <div class="form-group flex-fill" style="flex: 1 1 45%;">
-                    <label>Job Type</label>
-                    <SfDropDownList TItem="string" TValue="string" @bind-Value="searchCriteria.JobType" 
-                                    DataSource="jobTypes" Placeholder="Select Job Type" CssClass="search-dropdown" />
-                </div>
-            </div>
-
-            <div class="form-group text-center mt-4">
-                <SfButton CssClass="search-btn e-primary" @onclick="SearchJobs">Search</SfButton>
-            </div>
-        </div>
+            <div class="search-form d-flex flex-wrap align-items-center justify-content-center gap-3">
+                    <!-- Job Name Search -->
+                    <div class="form-group position-relative flex-fill" style="max-width: 400px;">
+                        <SfTextBox @bind-Value="searchCriteria.JobName" Placeholder="Enter job name"
+                                   CssClass="form-control rounded-pill p-2 shadow-sm" />
+                    </div>
+            
+                    <!-- Job Type Dropdown -->
+                    <div class="form-group position-relative flex-fill" style="max-width: 300px;">
+                        <SfDropDownList TItem="string" TValue="string" @bind-Value="searchCriteria.JobType" 
+                                        DataSource="jobTypes" Placeholder="Select Job Type"
+                                        CssClass="form-control rounded-pill shadow-sm" />
+                    </div>
+            
+                    <!-- Search Button -->
+                    <div class="form-group">
+                        <SfButton CssClass="btn btn-primary rounded-pill px-4 shadow-sm" @onclick="SearchJobs">
+                            <i class="fas fa-search me-2"></i> Search
+                        </SfButton>
+                    </div>
+             </div>
 
         <SfGrid DataSource="@jobs" TItem="JobModel" AllowPaging="true" AllowSorting="true" AllowFiltering="true">
             <GridColumns>

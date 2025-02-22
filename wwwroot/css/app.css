@@ -84,11 +84,11 @@ body{
     }
 
 .navbar {
-    background-color: #007BFF; /* Changed to a visible color */
+    background-color: #007BFF; 
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px; /* Reduced padding for better spacing */
-    gap: 1rem; /* Reduced gap for better button alignment */
+    padding: 15px 20px; 
+    gap: 1rem; 
 }
 
 .navbar-container {
@@ -177,84 +177,6 @@ body{
 }
 
 
-body .job-listing-container {
-    background-color:darkgray;
-    text-align: center;
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
-    min-height: calc(100vh - 150px); /* Ensures jobs section fills space */
-}
-
-body .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-body .title {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-body .explore-more {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
-
-body .job-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding-bottom: 50px; /* Ensures space before footer */
-}
-
-body .job-card {
-    width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: white;
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-    body .job-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-body .job-image {
-    width: 100%;
-    height: 80px;
-    object-fit: cover;
-}
-
-body .job-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-body .job-category {
-    font-size: 14px;
-    color: gray;
-}
-
-body .job-meta p {
-    font-size: 14px;
-    color: #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-body .job-meta i {
-    margin-right: 5px;
-}
 
 body .apply-btn {
     width: 100%;
@@ -714,3 +636,21 @@ label {
         background: #0056b3;
         color: white;
     }
+
+.container form-container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+    background-color: lightblue; 
+}
+
+.job-posting-card {
+    width: 80%;
+    max-width: 900px;
+    background-color: #c5e1f9; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: lightgrey;
+}

@@ -5,9 +5,9 @@
 @inject NavigationManager Navigation
 
 <div class="job-listing-container">
-    <div class="header">
-        <h2 class="title">Latest featured jobs</h2>
-        <a href="#" class="explore-more">Explore more →</a>
+    <div class="header-part">
+        <h2 class="title">Latest Featured Jobs</h2>
+        <a href="/" class="explore-more">Explore more →</a>
     </div>
 
     <div class="job-grid">
@@ -23,22 +23,23 @@
         {
             @foreach (var job in jobs)
             {
-                <SfCard CssClass="job-card">
-                    <SfCardHeader>
-                        <img src="images/logo.jpg" alt="@job.JobName" class="job-image" />
-                    </SfCardHeader>
-                    <SfCardContent>
-                        <h3 class="job-title">@job.JobName</h3>
-                        <p class="job-category">@job.JobType</p>
+                <div class="job-listing-card" @onclick="@(()=> NavigateToJobDetails(job.JobId))">
+                    <div class="job-details">
+                        <h3 class="job-title">Job Title: @job.JobName</h3>
+                        <p class="job-company"><i class="fas fa-building"></i> SunPro Jobs</p>
+                        <p class="job-location"><i class="fas fa-map-marker-alt">Location: </i> @job.Location</p>
+                        <p class="job-salary"><i class="fas fa-money-bill"> SalaryRange: </i> @job.SalaryRange</p>
+                        <p class="job-description">Description: @TruncateDescription(job.JobDescription, 250)</p>
+
                         <div class="job-meta">
-                            <p><i class="fas fa-clock"></i> @job.JobStatus</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Location Not Available</p>
+                            <span class="job-tag">FEATURED</span>
+                            <span class="job-tag new">NEW</span>
                         </div>
-                    </SfCardContent>
-                    <SfCardFooter>
-                        <SfButton CssClass="apply-btn" Content="View More" @onclick="@(() => NavigateToJobDetails(job.JobId))"></SfButton>
-                    </SfCardFooter>
-                </SfCard>
+                    </div>
+                    <div class="job-actions">
+                        <SFbutton class="apply-btn" @onclick="@(() => NavigateToJobDetails(job.JobId))">View More</SFbutton>
+                    </div>
+                </div>
             }
         }
     </div>
@@ -52,7 +53,7 @@
         try
         {
             jobs = await JobService.GetAllJobsAsync();
-            Console.WriteLine("$Jobs LOaded:{job.count}");
+            Console.WriteLine($"Jobs Loaded: {jobs.Count}");
         }
         catch (Exception ex)
         {
@@ -65,5 +66,9 @@
         Navigation.NavigateTo($"/job-details/{JobId}");
     }
 
-
+    private string TruncateDescription(string description, int maxLength)
+    {
+        if (string.IsNullOrEmpty(description)) return "No description available.";
+        return description.Length > maxLength ? description.Substring(0, maxLength) + "..." : description;
+    }
 }

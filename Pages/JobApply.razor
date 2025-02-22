@@ -17,35 +17,49 @@
     <EditForm Model="@applicationModel" OnValidSubmit="SubmitApplication">
         <DataAnnotationsValidator />
         <ValidationSummary />
-
+        <p>
+            <SfMessage Severity="MessageSeverity.Success" Visible="@showSuccessMessage" CssClass="visible-message">
+                Application was successful! Redirecting...
+            </SfMessage>
+            <SfMessage Severity="MessageSeverity.Error" Visible="@showErrorMessage" CssClass="visible-message">
+                Application failed. Please try again.
+            </SfMessage>
+        </p>
         <div class="form-group">
             <label>User Name</label>
             <SfTextBox @bind-Value="applicationModel.UserName" Placeholder="Enter full name" FloatLabelType="FloatLabelType.Always" />
+            <ValidationMessage For= "@(() => applicationModel.UserName)" />
         </div>
-
+        
+         
         <div class="form-group">
             <label>Email</label>
             <SfTextBox @bind-Value="applicationModel.Email" Placeholder="Enter email address" />
+            <ValidationMessage For="@(() => applicationModel.Email)" />
         </div>
 
             <div class="form-group">
                 <label>City</label>
                 <SfTextBox Placeholder="Enter city" @bind-Value="applicationModel.City" Required="true"></SfTextBox>
+            <ValidationMessage For="@(() => applicationModel.City)" />
             </div>
 
             <div class="form-group">
                 <label>Street</label>
                 <SfTextBox Placeholder="Enter street" @bind-Value="applicationModel.Street" Required="true"></SfTextBox>
+            <ValidationMessage For="@(() => applicationModel.Street)" />
             </div>
 
             <div class="form-group">
                 <label>Phone Number</label>
                 <SfTextBox Mask="(999) 999-9999" Placeholder="(___) ___-____" @bind-Value="applicationModel.PhoneNumber" Required="true"></SfTextBox>
+            <ValidationMessage For="@(() => applicationModel.PhoneNumber)" />
             </div>
 
             <div class="form-group">
                 <label>Postal Code</label>
                 <SfTextBox Placeholder="Enter postal code" @bind-Value="applicationModel.PostalCode" Required="true"></SfTextBox>
+            <ValidationMessage For="@(() => applicationModel.PostalCode)" />
             </div>
 
         <div class="form-group">
@@ -58,18 +72,11 @@
             <InputFile OnChange="OnCoverLetterUpload" />
         </div>
 
-        <div class="form-group apply-btn-container">
+        <div class="form-group apply-btn-container text-center mt-4text-center mt-4" >
             <SfButton Content="Submit Application" IsPrimary="true" Disabled="@isSubmitting" />
             <SfSpinner Visible="@isSubmitting" />
         </div>
     </EditForm>
-
-    @if (isMessageVisible)
-    {
-        <SfMessage CssClass="message-box" Severity="@messageSeverity">
-            @messageContent
-        </SfMessage>
-    }
 </SfCard>
 
 @code {
@@ -82,29 +89,22 @@
     private bool isEdit = false;
     private bool isMessageVisible = false;
     private string messageContent = string.Empty;
-    private MessageSeverity messageSeverity = MessageSeverity.Normal;
     private bool isSubmitting = false;
+    private bool showSuccessMessage = false;
+    private bool showErrorMessage = false;
 
-    private void ShowMessage(string content, MessageSeverity severity)
-    {
-        messageContent = content;
-        messageSeverity = severity;
-        isMessageVisible = true;
-        StateHasChanged();
-    }
     protected override async Task OnInitializedAsync()
     {
         UserId = await userService.GetUserId();
         if (JobId != 0)
         {
             isEdit = true;
-           // await LoadApplicationData(JobId);
+            // await LoadApplicationData(JobId);
         }
     }
     private void DisplayMessage(string content, MessageSeverity severity)
     {
         messageContent = content;
-        messageSeverity = severity;
         isMessageVisible = true;
         StateHasChanged();  
     }
@@ -122,11 +122,11 @@
         }
         catch (Exception ex)
         {
-            ShowMessage($"Failed to load application data: {ex.Message}", MessageSeverity.Error);
+            DisplayMessage($"Failed to load application data: {ex.Message}", MessageSeverity.Error);
         }
     }
 
-     private async Task SubmitApplication()
+    private async Task SubmitApplication()
     {
         if (isSubmitting) return;  // Prevent multiple submissions
         isSubmitting = true;
@@ -139,15 +139,15 @@
             if (response)
             {
                 DisplayMessage("Application submitted successfully!", MessageSeverity.Success);
-
-        
-                await Task.Delay(3000);
-
-            
+                showSuccessMessage = true;
+                StateHasChanged();
+                await Task.Delay(5000);
+           
                 Navigation.NavigateTo("/jobs");
             }
             else
             {
+                showSuccessMessage = false;
                 DisplayMessage("Failed to submit the application. Please try again later.", MessageSeverity.Error);
             }
         }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "n2L+Db5DuJBKUm34ooItbnz2MHc0tf9Gevj4PVITboM=",
+  "Hash": "5pxPXOUqISLqq1mQJIZNJNkl5LEAmezetGgOamG023o=",
   "Source": "SunPro Jobs",
   "BasePath": "/",
   "Mode": "Root",
@@ -11016,6 +11016,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\app.css"
+    },
+    {
+      "Identity": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\css\\Jobs.css",
+      "SourceId": "SunPro Jobs",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/Jobs.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Jobs.css"
     },
     {
       "Identity": "C:\\Users\\CHRISTIAN\\source\\repos\\SUNPROJOBS\\SunPro Jobs\\wwwroot\\css\\Register.css",

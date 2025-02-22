@@ -19,7 +19,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services.AddScoped<JobService>();
 builder.Services.AddScoped<userServices>();
 builder.Services.AddScoped<ApplicationService>();
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NMaF1cXmhLYVJ+WmFZfVtgfV9DaVZVTGYuP1ZhSXxWdkdiWH9XdX1RTmZcVUI=");
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NMaF1cXmhLYVFzWmFZfVtgc19HaVZQTGY/P1ZhSXxWdkdiUX5XcX1UTmNUUkA=");
 //builder.Services.AddScoped<NavigationManager>();
 
 
