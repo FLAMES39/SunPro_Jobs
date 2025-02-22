@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SunPro Jobs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0877b6e10b8366979836690280054e64a1c597f1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ef1c560cb7527122750a9fe8a9d3d478e2e5766")]
 [assembly: System.Reflection.AssemblyProductAttribute("SunPro Jobs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SunPro Jobs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -13,89 +13,87 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = SunPro_Jobs
 build_property.RootNamespace = SunPro_Jobs
-build_property.ProjectDir = c:\Users\CHRISTIAN\source\repos\SUNPROJOBS\SunPro Jobs\
+build_property.ProjectDir = C:\Users\CHRISTIAN\source\repos\SUNPROJOBS\SunPro Jobs\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\CHRISTIAN\source\repos\SUNPROJOBS\SunPro Jobs
+build_property.MSBuildProjectDirectory = C:\Users\CHRISTIAN\source\repos\SUNPROJOBS\SunPro Jobs
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/App.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Layout/MainLayout.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Admin.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Admin.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Appplication.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Appplication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwcGxpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Component.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Component.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Home.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/JobApply.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/JobApply.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9iQXBwbHkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/JobDetails.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/JobDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9iRGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/JobPosting.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/JobPosting.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9iUG9zdGluZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Jobs.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Jobs.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9icy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Jobseaker.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Jobseaker.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9ic2Vha2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Profile.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Register.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/testComponents/HrJobview.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/testComponents/HrJobview.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdGVzdENvbXBvbmVudHNcSHJKb2J2aWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/testComponents/TestJobs.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/testComponents/TestJobs.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdGVzdENvbXBvbmVudHNcVGVzdEpvYnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Users.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Pages/Users.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Shared/Bottom.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Shared/Bottom.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEJvdHRvbS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Shared/NavBar.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/Shared/NavBar.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdkJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/_Imports.razor]
+[C:/Users/CHRISTIAN/source/repos/SUNPROJOBS/SunPro Jobs/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

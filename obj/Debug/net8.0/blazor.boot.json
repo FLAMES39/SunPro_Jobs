@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "SunPro Jobs",
   "resources": {
-    "hash": "sha256-XEPxF9ztXGXVgddJgSTs0/YBx4gONP+ejr4Qcc78I2k=",
+    "hash": "sha256-HgYCv3+AhrGdJQiaXXr05nmLQ6j4mAE/9PgMSul4kww=",
     "jsModuleNative": {
       "dotnet.native.8.0.13.978pg22aw7.js": "sha256-xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w="
     },
@@ -225,10 +225,10 @@
       "mscorlib.wasm": "sha256-RAf5jgXLg+06C4tJ3CabxAZaVjCN2/+E6fxRjRN8yHk=",
       "netstandard.wasm": "sha256-KCAE8RQwTurP5pGnGF819qf9sK++2O0rXzt6tOjlfi8=",
       "System.Private.CoreLib.wasm": "sha256-LQqLbHgeEX4HONx7GwIxGgmzIXP6n2OPxqnq+/4Tyqk=",
-      "SunPro Jobs.wasm": "sha256-nxwrHhza/6iu1Zes5UgEE74KQk2jBR/HRFraiagRO0E="
+      "SunPro Jobs.wasm": "sha256-7BrPyG3EHd8jIrAMB9A1f4bB0ylUA8h4B+orgTR74MM="
     },
     "pdb": {
-      "SunPro Jobs.pdb": "sha256-9sqtFfo/mCyjBlAA+26Zz5zaUSLXB+TXLTIzWWjkhm8="
+      "SunPro Jobs.pdb": "sha256-5TWa9Jk0qWlS18Q18SbKtrMqh9lyTIZplDOFWydyc50="
     }
   },
   "cacheBootResources": true,
